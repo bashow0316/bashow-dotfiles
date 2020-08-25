@@ -1,0 +1,31 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+    name = bashow
+    email = bashow0316@gmail.com
+[core]
+    excludesfile = gitignore/Global/
+[color]
+    ui = auto
+[alias]
+    # git
+    st = status
+    b = branch
+    cm = commit
+    stt = status -uno
+    difff = diff --name-diff
+    diffs = diff --cached
+    dp = diff --no-prefix
+    dsp = diff --cached --no-prefix
+    co = checkout    
+    logg = log --graph --all --decorate
+    logp = log --pretty='format:%C(yellow)%h%Creset %C(magenta)%cd%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset%C(black bold)%ar%Creset' --date=iso
+    loggp = log --graph --pretty=format:'%Cred%h%Creset - %s%C(yellow)%d%Creset %Cgreen(%cr:%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+    lg = log --graph --pretty=format:'%Cred%h%Creset - %s%C(yellow)%d%Creset %Cgreen(%cr:%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+    cp = cherry-pick
+
+    # git flow
+    ffs = flow feature start
+    sp = stash pop
+    ss = stash save
+
