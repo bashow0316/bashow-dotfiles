@@ -1,7 +1,7 @@
 ### .zshrc
 ### bashow macos
 ### author: bashow
-### Update: 2020/07/12
+### Update: 2020/08/25
 
 
 ### Added by Zinit's installer
@@ -21,7 +21,7 @@ autoload -Uz _zinit
 # Load using the for-syntax
 # zinit wait lucid for \
 #     "some/plugin"
-#  zinit wait lucid for \
+# zinit wait lucid for \
 #     "other/plugin"
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
@@ -91,6 +91,30 @@ setopt auto_resume
 # short_loop
 setopt short_loops
 
+# Alt+Backspace
+backward-kill-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-kill-word
+}
+zle -N backward-kill-dir
+bindkey '^[^?' backward-kill-dir
+
+# Alt+Left
+backward-word-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle backward-word
+}
+zle -N backward-word-dir
+bindkey "^[[1;3D" backward-word-dir
+
+# Alt+Right
+forward-word-dir () {
+    local WORDCHARS=${WORDCHARS/\/}
+    zle forward-word
+}
+zle -N forward-word-dir
+bindkey "^[[1;3C" forward-word-dir
+
 ### zinit
 
 # Two regular plugins loaded without tracking.
@@ -100,14 +124,48 @@ zinit light zdharma/fast-syntax-highlighting
 # Plugin history-search-multi-word loaded with tracking.
 zinit load zdharma/history-search-multi-word
 
+
+# A glance at the new for-syntax – load all of the above
+# plugins with a single command. For more information see:
+# https://zdharma.org/zinit/wiki/For-Syntax/
+zinit for \
+    light-mode  zsh-users/zsh-autosuggestions \
+    light-mode  zdharma/fast-syntax-highlighting \
+                zdharma/history-search-multi-word \
+    light-mode pick"async.zsh" src"pure.zsh" \
+    sindresorhus/pure
+
 # Binary release in archive, from GitHub-releases page.
 # After automatic unpacking it provides program "fzf".
 zinit ice from"gh-r" as"program"
 zinit load junegunn/fzf-bin
 
+# One other binary release, it needs renaming from `docker-compose-Linux-x86_64`.
+# This is done by ice-mod `mv'{from} -> {to}'. There are multiple packages per
+# single version, for OS X, Linux and Windows – so ice-mod `bpick' is used to
+# select Linux package – in this case this is actually not needed, Zinit will
+# grep operating system name and architecture automatically when there's no `bpick'.
+zinit ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
+zinit load docker/compose
+
+# Scripts that are built at install (there's single default make target, "install",
+# and it constructs scripts by `cat'ing a few files). The make'' ice could also be:
+# `make"install PREFIX=$ZPFX"`, if "install" wouldn't be the only, default target.
+zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+zinit light tj/git-extras
+
+# For GNU ls (the binaries can be gls, gdircolors, e.g. on OS X when installing the
+# coreutils package from Homebrew; you can also use https://github.com/ogham/exa)
+zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+zinit light trapd00r/LS_COLORS
+
+# make'!...' -> run make before atclone & atpull
+zinit ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh"
+zinit light direnv/direnv
+
 # OMZ plugins
-zplugin snippet OMZ::plugins/docker-machine/docker-machine.plugin.zsh
-zplugin snippet OMZ::plugins/docker-compose/docker-compose.plugin.zsh
+#zplugin snippet OMZ::
+
 
 
 ### alias
