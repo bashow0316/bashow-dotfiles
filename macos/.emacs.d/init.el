@@ -1,6 +1,6 @@
 ;; bashow init.el
 ;; author: bashow
-;; Update: 2020/07/12
+;; Update: 2021/02/06
 
 
 ;; gnu-elpa-keyring-update
@@ -12,11 +12,13 @@
 
 (require 'package)
 ;; gnu
-(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 ;; melpa
-(add-to-list 'package-archives '("melpa" . "https://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; stable melpa
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; org
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 
 ;; initialize
 (package-initialize)
@@ -81,17 +83,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (manoj-dark)))
+ '(custom-enabled-themes '(manoj-dark))
  '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
  '(helm-ag-command-option "--all-text")
- '(helm-ag-ignore-buffer-patterns (quote ("\\.txt\\'" "\\.mkd\\'")))
- '(helm-ag-insert-at-point (quote symbol))
+ '(helm-ag-ignore-buffer-patterns '("\\.txt\\'" "\\.mkd\\'"))
+ '(helm-ag-insert-at-point 'symbol)
  '(inferior-lisp-program "sbcl")
  '(package-selected-packages
-   (quote
-    (flycheck-haskell flycheck-rust racer zones elpy auto-virtualenvwrapper virtualenvwrapper nadvice python-mode magit yatex helm-ag-r json-rpc ace-jump-mode neotree undo-tree scheme python helm xpm xelb volatile-highlights use-package sly ruby-end ruby-electric recentf-ext rainbow-mode markdown-mode magic-filetype key-combo key-chord json-mode js2-mode inf-ruby helm-ag haskell-mode go-mode geben-helm-projectile flycheck evil-magit enh-ruby-mode display-theme counsel-projectile auto-complete add-hooks)))
- '(sql-product (quote mysql))
- '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
+   '(ctags-update flycheck-haskell flycheck-rust racer zones elpy auto-virtualenvwrapper virtualenvwrapper nadvice python-mode magit yatex helm-ag-r json-rpc ace-jump-mode neotree undo-tree scheme python helm xpm xelb volatile-highlights use-package sly ruby-end ruby-electric recentf-ext rainbow-mode markdown-mode magic-filetype key-combo key-chord json-mode js2-mode inf-ruby helm-ag haskell-mode go-mode geben-helm-projectile flycheck evil-magit enh-ruby-mode display-theme counsel-projectile auto-complete add-hooks))
+ '(sql-product 'mysql)
+ '(uniquify-buffer-name-style 'post-forward-angle-brackets nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -172,6 +173,30 @@
 
 ;; use-package
 (require 'use-package)
+
+;; ctags
+(setq ctags-update-command "/usr/local/bin/ctags")
+
+(defun create-tags (dir-name)
+  "Create tags file."
+  (interactive "DDirectory: ")
+  (shell-command
+   (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
+)
+
+(defun build-ctags ()
+  (interactive)
+  (message "building project tags")
+  (let ((root (eproject-root)))
+    (shell-command (concat "ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.git --exclude=public -f " root "TAGS " root)))
+  (visit-project-tags)
+  (message "tags built successfully"))
+
+(defun visit-project-tags ()
+  (interactive)
+  (let ((tags-file (concat (eproject-root) "TAGS")))
+    (visit-tags-table tags-file)
+    (message (concat "Loaded " tags-file))))
 
 ;; Helm
 (use-package helm :defer t
