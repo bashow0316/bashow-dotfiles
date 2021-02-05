@@ -166,6 +166,9 @@ zinit light direnv/direnv
 # OMZ plugins
 #zplugin snippet OMZ::
 
+# pyenv virtualenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 
 ### alias
