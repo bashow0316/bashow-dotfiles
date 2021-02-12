@@ -237,6 +237,9 @@ alias ff='find . -type f -name'
 # latexmk
 alias latexmkpvc='latexmk -pvc'
 
+# tags
+alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.git --exclude=public -f TAGS'
+
 # icu4c
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
@@ -246,3 +249,5 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
 # sqlite
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+
