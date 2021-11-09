@@ -240,6 +240,9 @@ alias latexmkpvc='latexmk -pvc'
 # tags
 alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.git --exclude=public -f TAGS'
 
+# llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
 # icu4c
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
