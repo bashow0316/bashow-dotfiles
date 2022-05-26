@@ -5,6 +5,7 @@
 	email = bashow0316@gmail.com
 [core]
 	excludesfile = /Users/bashow/.gitignore_global
+	autocrlf = input
 [color]
     ui = auto
 [alias]

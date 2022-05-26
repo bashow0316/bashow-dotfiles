@@ -171,9 +171,6 @@ forward-word-dir () {
 zle -N forward-word-dir
 bindkey "^[[1;3C" forward-word-dir
 
-### pyenv virtualenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 ### alias
 
@@ -246,3 +243,12 @@ alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# PATH
+
+# pyenv and pyenv-virtualenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
