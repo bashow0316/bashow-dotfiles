@@ -251,4 +251,7 @@ alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# Rust
+source $HOME/.cargo/env
+
 

@@ -15,7 +15,8 @@ export ZSHHISH=$HOME/work/zsh_hist/
 export PATH=/usr/local/go/bin:$PATH
 
 # Rust
-source $HOME/.cargo/env
+# source $HOME/.cargo/env
+
 
 # llvm
 export PATH="/usr/local/opt/llvm/bin:$PATH"
@@ -33,3 +34,5 @@ export PATH="/usr/local/opt/sqlite/bin:$PATH"
 # vscode
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+
+. "$HOME/.cargo/env"
