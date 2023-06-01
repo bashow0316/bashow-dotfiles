@@ -1,14 +1,14 @@
+### .zshrc
+### bashow macos
+### author: bashow
+### Update: 2021/12/30
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-### .zshrc
-### bashow macos
-### author: bashow
-### Update: 2021/12/30
 
 ### zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -243,15 +243,5 @@ alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-
-# PATH
-
-# pyenv and pyenv-virtualenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# Rust
-source $HOME/.cargo/env
 
 
