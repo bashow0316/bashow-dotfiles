@@ -1,7 +1,7 @@
 ### .zshrc
 ### bashow macos
 ### author: bashow
-### Update: 2021/12/30
+### Update: 2023/06/01
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -10,7 +10,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-### zinit
+### zinit home
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -38,7 +38,7 @@ zinit snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 zinit ice wait lucid
 zinit load zdharma-continuum/history-search-multi-word
 
-### zinit
+### light mode
 # A glance at the new for-syntax – load all of the above
 # plugins with a single command. For more information see:
 # https://zdharma-continuum.github.io/zinit/wiki/For-Syntax/
