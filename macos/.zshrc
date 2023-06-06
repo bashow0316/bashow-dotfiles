@@ -85,6 +85,18 @@ zi light trapd00r/LS_COLORS
 zi ice as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' src"zhook.zsh"
 zi light direnv/direnv
 
+## Plugin
+
+# Syntax
+zi light zsh-users/zsh-syntax-highlighting
+
+## autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+
+## auto completions
+zi light zsh-users/zsh-completions
+
+
 ### zsh
 
 # LANG
