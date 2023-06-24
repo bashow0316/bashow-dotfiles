@@ -1,7 +1,7 @@
 ### .zshrc
 ### bashow macos
 ### author: bashow
-### Update: 2023/06/01
+### Update: 2023/06/25
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -26,28 +26,13 @@ zi light romkatv/powerlevel10k
 # zi update --parallel
 
 ### Turbo and lucid
-zi ice wait    # wait is same wait"0"
-zi load zdharma-continuum/history-search-multi-word
-
-zi ice wait"2" # load after 2 seconds
-zi load zdharma-continuum/history-search-multi-word
-
-zi ice wait    # also be used in `light` and `snippet`
-zi snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
-
 zi ice wait lucid
 zi load zdharma-continuum/history-search-multi-word
+zi ice wait lucid
+zi load zdharma-continuum/fast-syntax-highlighting
+zi ice wait lucid
+zi snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
 
-### light mode
-# A glance at the new for-syntax – load all of the above
-# plugins with a single command. For more information see:
-# https://zdharma-continuum.github.io/zinit/wiki/For-Syntax/
-zinit for \
-    light-mode  zsh-users/zsh-autosuggestions \
-    light-mode  zdharma-continuum/fast-syntax-highlighting \
-                zdharma-continuum/history-search-multi-word \
-    light-mode pick"async.zsh" src"pure.zsh" \
-                sindresorhus/pure
 
 # Binary release in archive, from GitHub-releases page.
 # After automatic unpacking it provides program "fzf".
@@ -63,16 +48,20 @@ zi ice from"gh-r" as"program" mv"docker* -> docker-compose" bpick"*linux*"
 zi load docker/compose
 
 # Vim repository on GitHub – a typical source code that needs compilation – Zinit
-# can manage it for you if you like, run `./configure` and other `make`, etc. stuff.
+# can manage it for you if you like, run `./configure` and other `make`, etc.
 # Ice-mod `pick` selects a binary program to add to $PATH. You could also install the
 # package under the path $ZPFX, see: https://zdharma-continuum.github.io/zinit/wiki/Compiling-programs
-zi ice as"program" atclone"rm -f src/auto/config.cache; ./configure" \
-    atpull"%atclone" make pick"src/vim"
+zi ice \
+  as"program" \
+  atclone"rm -f src/auto/config.cache; ./configure" \
+  atpull"%atclone" \
+  make \
+  pick"src/vim"
 zi light vim/vim
 
-# Scripts that are built at install (there's single default make target, "install",
+# Scripts built at install (there's single default make target, "install",
 # and it constructs scripts by `cat'ing a few files). The make'' ice could also be:
-# `make"install PREFIX=$ZPFX"`, if "install" wouldn't be the only, default target.
+# `make"install PREFIX=$ZPFX"`, if "install" wouldn't be the only default target.
 zi ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zi light tj/git-extras
 
@@ -88,14 +77,21 @@ zi light direnv/direnv
 ## Plugin
 
 # Syntax
+zi ice wait lucid
 zi light zsh-users/zsh-syntax-highlighting
 
 ## autosuggestions
-zinit light zsh-users/zsh-autosuggestions
+zi ice wait lucid
+zi light zsh-users/zsh-autosuggestions
 
 ## auto completions
+zi ice wait lucid
 zi light zsh-users/zsh-completions
 
+## git
+zi ice wait lucid
+zi snippet OMZL::git.zsh
+zi snippet OMZP::git
 
 ### zsh
 
@@ -109,6 +105,10 @@ bindkey -e
 # colors
 autoload -U colors
 colors
+
+# compinit
+autoload -Uz compinit
+compinit
 
 # history
 HISTFILE=${HOME}/.zsh_history
