@@ -80,18 +80,40 @@ zi light direnv/direnv
 zi ice wait lucid
 zi light zsh-users/zsh-syntax-highlighting
 
-## autosuggestions
+# autosuggestions
 zi ice wait lucid
 zi light zsh-users/zsh-autosuggestions
 
-## auto completions
+# auto completions
 zi ice wait lucid
 zi light zsh-users/zsh-completions
 
-## git
+# git
 zi ice wait lucid
 zi snippet OMZL::git.zsh
 zi snippet OMZP::git
+
+# docker
+zi ice wait lucid
+zi snippet OMZP::docker
+zi ice wait lucid
+zi snippet OMZP::docker-compose
+
+# ansible
+zi ice wait lucid
+zi snippet OMZP::ansible
+
+# vagrant
+zi ice wait lucid
+zi snippet OMZP::vagrant
+
+# golang
+zi ice wait lucid
+zi snippet OMZP::golang
+
+# brew
+zi ice wait lucid
+zi snippet OMZP::brew
 
 ### zsh
 
@@ -112,7 +134,7 @@ compinit
 
 # history
 HISTFILE=${HOME}/.zsh_history
-HISTSIZE=100000
+HISTSIZE=10000000
 SAVEHIST=10000000
 setopt extended_history
 setopt hist_ignore_dups
@@ -218,6 +240,7 @@ alias gb='git branch'
 alias gd='git diff'
 alias gf='git fetch'
 alias gm='git merge'
+alias gs='git status'
 alias gcl='git config --list'
 
 # git alias bashow
@@ -243,6 +266,21 @@ alias tf='tail -f'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
+# screen
+alias sc='screen'
+
+# push and pop
+alias pu='pushd'
+alias po='popd'
+
+# watch
+alias watch="watch --color"
+alias wa='watch -c -n 1 -d '
+
+# docker
+alias d="docker"
+alias dc="docker compose"
+
 # latexmk
 alias latexmkpvc='latexmk -pvc'
 
@@ -251,5 +289,4 @@ alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 
