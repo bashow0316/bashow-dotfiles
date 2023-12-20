@@ -26,7 +26,6 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-
 set enc=utf-8
 set fencs=utf-8,iso2022-jp,euc-jp,sjis
 set showcmd
@@ -36,9 +35,9 @@ set title
 set number
 set ruler
 
-if has("syntax")
-  syntax on
-endif
+" if has("syntax")
+"   syntax on
+" endif
 
 "set cursorline
 "set cursorcolumn

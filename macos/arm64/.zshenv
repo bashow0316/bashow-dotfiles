@@ -1,16 +1,16 @@
 ### ~/.zshenv
 ### bashow zsh env
 # author: bashow
-# Update: 2021/06/07
+# Update: 2023/12/20
 
 # PATH
-export PATH=/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/python:$PATH
-export ZSHHISH=$HOME/work/zsh_hist/
+export PATH=/bin:/usr/bin/:/opt/homebrew/bin:$PATH
 
 # pyenv and pyenv-virtualenv
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Go
 export PATH=/usr/local/go/bin:$PATH
