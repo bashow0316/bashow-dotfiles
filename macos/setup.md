@@ -10,6 +10,7 @@
 ``` code
 xcode
 iterm
+1password
 ```
 
 ``` code
