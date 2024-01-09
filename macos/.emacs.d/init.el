@@ -24,7 +24,7 @@
 (package-initialize)
 
 ;; package refresh
-;;(package-refresh-contents)
+;; (package-refresh-contents)
 
 ;; add packeage
 
@@ -113,7 +113,7 @@
 (setq default-frame-alist initial-frame-alist)
 
 ;; font
-(set-frame-font "ricty-12")
+;; (set-frame-font "ricty-12")
 ;; (set-face-font 'default "Ricty Diminished-12")
 
 ;; theme
@@ -137,7 +137,7 @@
 (column-number-mode t)
 
 ;; linum mode
-(global-linum-mode t)
+(global-display-line-numbers-mode 1)
 
 ;; eol
 (setq eol-mnemonic-dos "(CRLF)")
@@ -202,7 +202,6 @@
 (use-package helm :defer t
   :diminish helm-mode
   :init
-  (require 'helm-config)
   (helm-mode t))
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
@@ -444,8 +443,9 @@ Key bindings:
 ;; which-func
 (which-function-mode t)
 
-(require 'key-combo)
-(key-combo-mode 1)
+;; (require 'key-combo)
+;; (global-key-combo-mode t)
+;; (key-combo-load-default)
 
 (require 'highlight-indentation)
 

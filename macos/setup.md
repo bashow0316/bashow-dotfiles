@@ -52,8 +52,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 brew install wget
 brew install git
 brew install xz
+brew install tmux
 brew install vim neovim
 brew install pyenv pyenv-virtualenv
 brew install --cask emacs
+brew install openjdk
 ```
-

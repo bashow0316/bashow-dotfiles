@@ -1,7 +1,9 @@
 ### .zshrc
 ### bashow macos
 ### author: bashow
-### Update: 2023/12/19
+### Update: 2024/01/09
+
+# zinit
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -20,6 +22,20 @@ autoload -Uz _zinit
 ### Load powerlevel10k theme
 zi ice depth"1" # git clone depth
 zi light romkatv/powerlevel10k
+
+### brew completions
+
+### zsh completions
+#### docker and docker-compose
+if [ -e ~/.zsh/completions ]; then
+  fpath=(~/.zsh/completions $fpath)
+fi
+
+#### brew
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 ### Upgrade zinit and plugins
 # zi self-update
@@ -114,6 +130,19 @@ zi snippet OMZP::golang
 # brew
 zi ice wait lucid
 zi snippet OMZP::brew
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
 
 ### zsh
 
@@ -279,24 +308,14 @@ alias wa='watch -c -n 1 -d '
 
 # docker
 alias d="docker"
-alias dc="docker compose"
+alias dc="docker-compose"
+
+# Kubernetes
+alias k="kubectl"
 
 # latexmk
 alias latexmkpvc='latexmk -pvc'
 
 # tags
 alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.git --exclude=public -f TAGS'
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
-### End of Zinit's installer chunk
 
