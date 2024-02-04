@@ -1,7 +1,7 @@
 ### .zshrc
 ### bashow macos
 ### author: bashow
-### Update: 2024/01/09
+### Update: 2024/02/04
 
 # zinit
 
@@ -23,19 +23,25 @@ autoload -Uz _zinit
 zi ice depth"1" # git clone depth
 zi light romkatv/powerlevel10k
 
-### brew completions
-
 ### zsh completions
-#### docker and docker-compose
-if [ -e ~/.zsh/completions ]; then
-  fpath=(~/.zsh/completions $fpath)
-fi
-
 #### brew
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
+
+#### docker and docker-compose
+if [ -e ~/.zsh/completions ]; then
+  fpath=(~/.zsh/completions $fpath)
+fi
+
+#### az
+autoload bashcompinit && bashcompinit
+source $(brew --prefix)/etc/bash_completion.d/az
+
+### compinit
+autoload -Uz compinit
+compinit
 
 ### Upgrade zinit and plugins
 # zi self-update
@@ -144,6 +150,7 @@ zinit light-mode for \
 
 ### End of Zinit's installer chunk
 
+
 ### zsh
 
 # LANG
@@ -156,10 +163,6 @@ bindkey -e
 # colors
 autoload -U colors
 colors
-
-# compinit
-autoload -Uz compinit
-compinit
 
 # history
 HISTFILE=${HOME}/.zsh_history
