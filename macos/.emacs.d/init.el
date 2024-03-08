@@ -105,7 +105,7 @@
 (setq initial-frame-alist
       (append (list
 	       '(width . 120)
-	       '(height . 60)
+	       '(height . 180)
 	       '(top . 0)
 	       '(left . 0)
 	       )

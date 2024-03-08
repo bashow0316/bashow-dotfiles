@@ -129,6 +129,10 @@ zi snippet OMZP::ansible
 zi ice wait lucid
 zi snippet OMZP::vagrant
 
+# cargo
+zi ice lucid nocompile
+zi load MenkeTechnologies/zsh-cargo-completion
+
 # golang
 zi ice wait lucid
 zi snippet OMZP::golang
@@ -321,4 +325,8 @@ alias latexmkpvc='latexmk -pvc'
 
 # tags
 alias ctagsmake='ctags -e -R --extra=+fq --exclude=db --exclude=test --exclude=.git --exclude=public -f TAGS'
+
+# relogin
+alias relogin='exec $SHELL -l'
+
 

@@ -6,6 +6,10 @@
 # PATH
 export PATH=/bin:/usr/bin/:/opt/homebrew/bin:$PATH
 
+# Visual Studio Code (code)
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+
 # pyenv and pyenv-virtualenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
