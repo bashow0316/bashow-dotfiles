@@ -1,11 +1,14 @@
 ;; bashow init.el
 ;; author: bashow
-;; Update: 2021/02/06
+;; Update: 2024/08/08
 
 
 ;; gnu-elpa-keyring-update
 ;; gpg --homedir ~/.emacs.d/elpa/gnupg --receive-keys 066DAFCB81E42C40
 ;; M-x package-install RET gnu-elpa-keyring-update RET
+
+;; cl
+(setq byte-compile-warnings '(cl-functions))
 
 ;; TLS1.3
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
@@ -120,7 +123,7 @@
 (defvar my/load-themes '(manoj-dark tango spike))
 (load-theme (car my/load-themes) t)
 
-;; Coding:
+;; Coding
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
@@ -161,9 +164,9 @@
 (add-hook 'web-mode-hook 'rainbow-mode)
 (add-hook 'html-mode-hook 'rainbow-mode)
 
-;; meta
-(when (eq system-type 'darwin)
-    (setq ns-command-modifier (quote meta)))
+;; mac meta
+(when (equal system-type 'darwin)
+  (setq mac-option-modifier 'meta))
 
 ;; backward
 (global-set-key "\C-h" 'backward-delete-char)

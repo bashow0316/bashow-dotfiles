@@ -24,22 +24,25 @@ zi ice depth"1" # git clone depth
 zi light romkatv/powerlevel10k
 
 ### zsh completions
+
+#### compinit
+autoload -Uz compinit
+compinit
+
 #### brew
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-#### docker and docker-compose
-if [ -e ~/.zsh/completions ]; then
-  fpath=(~/.zsh/completions $fpath)
-fi
+#### kubectl
+source <(kubectl completion zsh)
 
 #### az
 autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
 
-### compinit
+#### compinit
 autoload -Uz compinit
 compinit
 

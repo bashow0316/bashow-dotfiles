@@ -1,0 +1,19 @@
+[shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+[env]
+WINIT_X11_SCALE_FACTOR = "1.0"
+
+[window]
+opacity = 1.0
+blur = true
+
+[font]
+normal = { family = "MesloLGS NF", style = "Regular" }
+bold = { family = "MesloLGS NF", style = "Bold" }
+italic = { family = "MesloLGS NF", style = "Italic" }
+bold_italic = { family = "MesloLGS NF", style = "Bold Italic" }
+size = 12
+
+
