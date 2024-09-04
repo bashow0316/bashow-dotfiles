@@ -48,3 +48,4 @@ set mouse=a
 set ttymouse=xterm2
 
 set clipboard=unnamed,autoselect
+
