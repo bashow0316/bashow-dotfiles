@@ -252,7 +252,6 @@ alias grep='grep --color'
 alias df='df -h'
 
 # cd
-alias .='cd .'
 alias ..='cd ..'
 
 # emacs
