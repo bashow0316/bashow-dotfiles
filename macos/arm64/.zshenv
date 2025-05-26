@@ -3,6 +3,10 @@
 # author: bashow
 # Update: 2025/05/26
 
+# LANG
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Set WORDCHARS
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
