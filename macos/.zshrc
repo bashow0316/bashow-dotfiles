@@ -23,8 +23,6 @@ autoload -Uz _zinit
 zi ice depth"1" # git clone depth
 zi light romkatv/powerlevel10k
 
-### zsh completions
-
 #### compinit
 autoload -Uz compinit
 compinit
@@ -41,10 +39,6 @@ source <(kubectl completion zsh)
 #### az
 autoload bashcompinit && bashcompinit
 source $(brew --prefix)/etc/bash_completion.d/az
-
-#### compinit
-autoload -Uz compinit
-compinit
 
 ### Upgrade zinit and plugins
 # zi self-update
