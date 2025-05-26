@@ -1,14 +1,16 @@
 ### ~/.zshenv
 ### bashow zsh env
 # author: bashow
-# Update: 2023/12/20
+# Update: 2025/05/26
+
+# Set WORDCHARS
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # PATH
 export PATH=/bin:/usr/bin/:/opt/homebrew/bin:$PATH
 
 # Visual Studio Code (code)
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-
 
 # pyenv and pyenv-virtualenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -41,4 +43,7 @@ export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# less
+export LESS="-iRMXS"
 
